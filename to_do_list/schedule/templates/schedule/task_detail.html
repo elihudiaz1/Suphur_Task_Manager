@@ -1,0 +1,44 @@
+{% extends "schedule/base.html" %}
+{% block content %}
+ {% if object.task_type == 'static' %}
+
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+        <a class="mr-2" href="#">Priority Level: {{ object.priority_level }}</a>
+        <small class="text-muted">Start time: {{ object.start_time_hour }}:{{object.start_time_min}} {{object.start_time_mode}}
+        </small>
+        <small>------ </small>
+        <small class="text-muted">End time: {{ object.end_time_hour }}:{{object.end_time_min}} {{object.end_time_mode}}</small>
+        
+        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'schedule-update' object.id %}">Update</a>
+        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'schedule-delete' object.id %}">Delete</a>
+      </div>
+      <h2 class="article-title">{{ object.title }}</h2>
+      <p class="article-content">{{ object.content }}</p>
+
+      
+    </div>
+  </article>
+
+ {% else %}
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+        <a class="mr-2" href="#">Priority Level: {{ object.priority_level }}</a>
+       
+        
+        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'schedule-update-fluid' object.id %}">Update</a>
+        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'schedule-delete' object.id %}">Delete</a>
+      </div>
+      <h2 class="article-title">{{ object.title }}</h2>
+      <p class="article-content">{{ object.content }}</p>
+ 
+     
+    </div>
+  </article>
+ {% endif %}
+
+{% endblock content %}
+
+
